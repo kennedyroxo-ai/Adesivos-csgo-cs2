@@ -1,0 +1,17 @@
+{
+  "source_files": 25022,
+  "material_entries": 11242,
+  "texture_files": 13780,
+  "collections": 70,
+  "uncompressed_bytes": 20133654641,
+  "effect_hints": {
+    "nao_identificado": 3561,
+    "holo": 1828,
+    "foil": 1787,
+    "gold": 3264,
+    "glitter": 776,
+    "lenticular": 26
+  },
+  "download_ready": 0,
+  "scope": "Inventário do pacote fornecido; não é catálogo completo oficial nem lista de nomes comerciais."
+}
