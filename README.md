@@ -1,12 +1,29 @@
 # Catálogo de adesivos CS:GO / CS2
 
+## Downloads disponíveis para o SkinMaker
+
+**11.237 opções**, incluindo **1.881 materiais holo**, publicadas para o SkinMaker 0.6.45.
+
+- [Catálogo de downloads](https://github.com/kennedyroxo-ai/Adesivos-csgo-cs2/releases/download/packages-july-2026-v1/catalog.json)
+- [Release dos pacotes](https://github.com/kennedyroxo-ai/Adesivos-csgo-cs2/releases/tag/packages-july-2026-v1)
+- [Relatório da preparação](https://github.com/kennedyroxo-ai/Adesivos-csgo-cs2/releases/download/packages-july-2026-v1/package-report.json)
+
+O aplicativo baixa somente o ZIP do adesivo escolhido por HTTP Range, confere tamanho/SHA-256 e guarda o pacote offline. Não é preciso baixar os arquivos .bin completos. Os 196 bundles somam aproximadamente 12,85 GB no GitHub; eles não são incorporados ao APK.
+
+As imagens e os materiais originais são preservados nos pacotes. Holo usa máscara e espectro próprios; novos materiais precisam de teste no CSMOS. O editor atual permite um espectro holo por projeto. Foil, glitter e outros shaders especiais são apresentados como imagens estáticas nesta versão.
+
+Os cinco sticker_proxies de default são auxiliares sem imagem própria e não entram na lista de downloads. Oito materiais com nomes de texturas divergentes foram resolvidos por aliases, preservando os bytes originais e registrando a correção no package.json.
+
+**Integração:** use o catalog.json da release. Os arquivos de collections/ abaixo são o inventário técnico da fonte; seus campos antigos download_ready/package_url não são a API atual de instalação.
+
+
 Inventário organizado do pacote stickers_july_2026.7z fornecido pelo usuário.
 
 **11,242 materiais VMT**, **13,780 texturas VTF**, **70 pastas**; total **25,022 arquivos**.
 
 Os materiais são candidatos a adesivos: não representam necessariamente itens comerciais únicos. Nomes são técnicos; tipos são inferidos pelo nome. Não há confirmação de procedência byte a byte com o jogo nem separação comprovada entre CS:GO e CS2.
 
-Este commit organiza o índice. Os binários permanecem no pacote original; download_ready=false evita oferecer pacotes individuais inexistentes. É necessário extrair e ler cada VMT para resolver texturas, máscaras e espectros compartilhados antes de publicar downloads. O Dignitas já testado no SkinMaker é independente deste inventário.
+Este inventário registra a estrutura do arquivo fornecido. A disponibilidade dos pacotes gerados está no catálogo de downloads da release, indicado acima. O Dignitas validado é preservado no aplicativo com sua identidade original de cache.
 
 ## Lista por coleção
 
