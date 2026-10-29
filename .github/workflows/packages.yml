@@ -1,0 +1,44 @@
+name: Prepare downloadable sticker packages
+on:
+  push:
+    paths: ['tools/package_stickers.py', 'tools/vtf_png.py', '.github/workflows/packages.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: sticker-packages
+  cancel-in-progress: false
+jobs:
+  packages:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+      - name: Make room for original texture archive
+        run: sudo rm -rf /usr/local/lib/android /usr/share/dotnet /opt/ghc /opt/hostedtoolcache/CodeQL
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install extraction and texture dependencies
+        run: python -m pip install gdown py7zr Pillow texture2ddecoder
+      - name: Verify decoder, dependencies, ranges and package checksums
+        run: python -m unittest discover -s tools -p test_packages.py -v
+      - name: Download and verify original archive
+        run: |
+          gdown 1EUByorNTy6Klp4LxcJIbCoHZuvtF0y8W -O stickers.7z
+          echo '2381ac45df58dcd5792d994ee40e18861893d3dbde2c4e2dd4f5ba0383cb70aa  stickers.7z' | sha256sum -c -
+      - name: Extract all original resources with archive CRC checks
+        run: |
+          python tools/extract_stickers.py
+          rm stickers.7z
+      - name: Resolve materials, convert previews and publish verified packages
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python tools/package_stickers.py originals --publish
+      - name: Preserve package report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sticker-package-report
+          path: delivery/*.json
+          retention-days: 14
